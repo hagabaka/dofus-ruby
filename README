@@ -1,0 +1,103 @@
+Dofus Recipe Calculator is a tool to help crafters calculate how many items are
+needed for batch crafting based on the number of certain ingredients in their
+inventory.
+
+REQUIREMENTS
+
+- Ruby <http://ruby-lang.org/>
+- HighLine <http://highline.rubyforge.org/>
+
+INSTALLATION
+
+- Put the contents of bin directory to a directory for executable commands
+- Put the contents of lib directory to a directory where Ruby looks for libraries
+
+RUNNING WITHOUT INSTALLATION
+
+ruby -Ilib bin/dofus-recipe-calculator.rb
+
+TUTORIAL
+
+Running the program should present the main menu:
+1. Edit inventory
+2. Batch craft
+3. List items
+4. List recipes
+5. Quit
+
+First enter [1] to edit inventory; here you should enter ingredients you will
+craft with, and the numbers you have. Say you have 12 Bird Meat *, 4 Pinch of
+Temporal Powder. Then enter as follows (the things you type are highlighted in
+[ ] here, don't actually type brackets):
+
+| Enter an item:
+| ?  [Bird Meat *]
+| Enter amount to increase/decrease: [12]
+| Inventory:
+| 12 Bird Meat *
+
+Don't enter Pinch of Temporal Powder for now (you can do it, but it's better
+to do it later, as you'll see), and just press [Ctrl-C] to go back to main menu.
+
+Now enter [2] to craft. The program will show a list of recipes you can choose
+from based on your inventory.
+
+| Possible recipes with current inventory:
+| 1. Preserved Bird Meat = 2 Pinch of Temporal Powder, 1 Bird Meat *
+
+(If you entered Pinch of Temporal Powder before, then here you will get a lot of
+other recipes in the menu, because they also have that ingredient. That's why
+it's better to not enter such ingredients before crafting.)
+
+Enter [1] to use the recipe. The program will ask if you will buy more Bird Meat
+to craft. If it was an ingredient like Pinch of Temporal Powder you would say
+yes, but here you would say no.
+
+| Will you buy more of Bird Meat * for this batch? [n]
+
+Now the program will show how many times the recipe can be applied, and update
+your inventory:
+
+| Recipe performed 12 times.
+| Inventory:
+| -24 Pinch of Temporal Powder, 0 Bird Meat *
+
+And your inventory is now empty so you won't be able to craft more, before
+editing the inventory.
+
+| No recipe can be used with current inventory
+| Inventory:
+| -24 Pinch of Temporal Powder, 0 Bird Meat *
+
+But it says you have -24 Pinch of Temporal Powder. This actually means 24 of
+them were used in the batch. So if you have 0 to start with, you should buy
+24 before you craft in the game. If you have 4 to start with, you can now
+edit the inventory:
+
+| Enter an item:
+| ? [Pinch of Temporal Powder]
+| Enter amount to increase/decrease: [4]
+| Inventory:
+| -20 Pinch of Temporal Powder, 0 Bird Meat *
+
+And you know that you only need to buy 20.
+
+TIPS
+
+- After you enter an item, you will get the prompt to enter an item again. Same
+with recipes as long as the last craft didn't exhaust your inventory. If you
+don't want to enter another item or craft again for now, just press Ctrl-C
+to go to main menu.
+
+- You can enter all your meat/fish at the beginning, and then do the
+recipes together, and the inventory will still show how many items you need
+to buy in total for all the recipes.
+
+- When entering items and recipes you can type the first few letters and press
+TAB to use auto-completion. Unfortunately this currently doesn't work if there
+are more than one items/recipes that start with the letters you type.
+
+CREDITS
+
+Recipe data is from http://dofus.wikia.com/
+
